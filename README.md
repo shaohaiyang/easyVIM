@@ -486,16 +486,12 @@ function HtmlHeader()
     call append(1,"<html>")
     call append(2,"<head>")
     call append(3,"<title>HTML|Bootstrap</title>")
-    call append(4,"<meta charset='utf-8' name='viewport'
-content='width=device-width,initial-scale=1.0'>")
-    call append(5,"<link rel=\"stylesheet\"
-href=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css\">") 
+    call append(4,"<meta charset='utf-8' name='viewport' content='width=device-width,initial-scale=1.0'>")
+    call append(5,"<link rel=\"stylesheet\" href=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css\">") 
     call append(6,"</head>")
     call append(7,"<body>")
-    call append(8,"<script
-src=\"http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js\"></script>")
-    call append(9,"<script
-src=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js\"></script>")
+    call append(8,"<script src=\"http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js\"></script>")
+    call append(9,"<script src=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js\"></script>")
     call append(10,"</body>")
     call append(11,"</html>")
 endfunction 
@@ -513,8 +509,7 @@ nnoremap <C-m>t :call HtmlTable()<CR>
 function HtmlTable()
     normal gg
     normal O
-    call setline(1, "<div class='table-responsive'><table class='table
-table-hover table-condensed table-striped'>")
+    call setline(1, "<div class='table-responsive'><table class='table table-hover table-condensed table-striped'>")
     call append(1,"<caption>Table Example</caption>")
     call append(2,"<thead><tr><th>Name</th><th>Sex</th></tr></thead>") 
     call append(3,"<tbody>")
