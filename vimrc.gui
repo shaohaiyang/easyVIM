@@ -196,9 +196,7 @@ endif
 " 快捷键
 " =========
 let NERDTreeWinSize=22
-map nn :NERDTree <cr>
-map nc :NERDTreeClose <cr>
-map nt :NERDTreeToggle<cr>
+map zz :NERDTreeToggle<cr>
   
 " 标签相关的快捷键 Ctrl
 map tn :tabnext<cr>
