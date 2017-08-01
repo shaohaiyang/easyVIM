@@ -5,19 +5,44 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>我的第一个electron测试</title>
     <!-- Bootstrap -->
-    <link href="bootstap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="./bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="./bootstrap/js/jquery-3.2.1.min.js"></script>
+    <script src="./bootstrap/js/bootstrap.min.js"></script>
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <title>我的第一个electron测试</title>
   </head>
   <body>
     <H1>你好,Electron!</H1>
+    <div class='fluid-container'><div class='row'>
+    <div class='col-xs-12' style='background-color: #dedef8;'>span 12</div>
+    </div></div>
+    <div class='table-responsive'><table class='table table-hover table-condensed table-striped'>
+    <caption>Table Example</caption>
+    <thead><tr><th>Name</th><th>Sex</th></tr></thead>
+    <tbody>
+    <tr class='active'><td>Shaohy</td><td>Male</td></tr>
+    <tr class='success'><td>Amy</td><td>Female</td></tr>
+    <tr class='waring'><td>May</td><td>Female</td></tr>
+    <tr class='danger'><td>Jerry</td><td>Male</td></tr>
+    </tbody></table></div>
 
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="bootstrap/js/jquery.min.js"></script>
-    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <div class='dropdown'>
+    <button type='button' class='btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown'>喜爱的语言&nbsp;<span class='glyphicon glyphicon-cloud glyphicon-pencil glyphicon-search glyphicon-heart'></span></button>
+    <ul class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu1'>
+    <li role='presentation' class='dropdown-header'>系统编程</li>
+    <li role='presentation'><a role='menuitem' tabindex='-1' href='#'>Java</a></li>
+    <li role='presentation' class='divider'></li>
+    <li role='presentation' class='dropdown-header'>脚本编程</li>
+    <li role='presentation'><a role='menuitem' tabindex='-1' href='#'>Python</a></li>
+    </ul>
+    </div>
+
+    We are using node <script>document.write(process.versions.node)</script>,
+    Chrome <script>document.write(process.versions.chrome)</script>,
+    and Electron <script>document.write(process.versions.electron)</script>.
   </body>
 </html>
