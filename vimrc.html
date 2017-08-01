@@ -1,0 +1,67 @@
+autocmd bufnewfile *.htm* call HtmlHeader()
+
+nnoremap <C-m>h :call HtmlHeader()<CR>
+function HtmlHeader()
+    let l = line(".") - 1
+    let l = l + 1 | call append(l,"<!DOCTYPE html>")
+    let l = l + 1 | call append(l,"<html>")
+    let l = l + 1 | call append(l,"<head>")
+    let l = l + 1 | call append(l,"<title>HTML|Bootstrap</title>")
+    let l = l + 1 | call append(l,"<meta charset='utf-8' name='viewport' content='width=device-width,initial-scale=1.0'>")
+    let l = l + 1 | call append(l,"<link rel=\"stylesheet\" href=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css\">") 
+    let l = l + 1 | call append(l,"</head>")
+    let l = l + 1 | call append(l,"<body>")
+    let l = l + 1 | call append(l,"<script src=\"http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js\"></script>")
+    let l = l + 1 | call append(l,"<script src=\"http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js\"></script>")
+    let l = l + 1 | call append(l,"</body>")
+    let l = l + 1 | call append(l,"</html>")
+endfunction 
+ 
+nnoremap <C-m>d :call HtmlDiv()<CR>
+function HtmlDiv()
+    let l = line(".") - 1
+    let l = l + 1 | call append(l, "<div class='fluid-container'><div class='row'>")
+    let l = l + 1 | call append(l,"<div class='col-xs-12' style='background-color: #dedef8;'>span 12</div>")
+    let l = l + 1 | call append(l,"</div></div>") 
+endfunction 
+ 
+nnoremap <C-m>t :call HtmlTable()<CR>
+function HtmlTable()
+    let l = line(".") - 1
+    let l = l + 1 | call append(l, "<div class='table-responsive'><table class='table table-hover table-condensed table-striped'>")
+    let l = l + 1 | call append(l,"<caption>Table Example</caption>")
+    let l = l + 1 | call append(l,"<thead><tr><th>Name</th><th>Sex</th></tr></thead>") 
+    let l = l + 1 | call append(l,"<tbody>")
+    let l = l + 1 | call append(l,"<tr class='active'><td>Shaohy</td><td>Male</td></tr>") 
+    let l = l + 1 | call append(l,"<tr class='success'><td>Amy</td><td>Female</td></tr>") 
+    let l = l + 1 | call append(l,"<tr class='waring'><td>May</td><td>Female</td></tr>") 
+    let l = l + 1 | call append(l,"<tr class='danger'><td>Jerry</td><td>Male</td></tr>") 
+    let l = l + 1 | call append(l,"</tbody></table></div>") 
+endfunction 
+ 
+nnoremap <C-m>m :call HtmlMenu()<CR>
+function HtmlMenu()
+    let l = line(".") - 1
+    let l = l + 1 | call append(l,"<div class='dropdown'>")
+    let l = l + 1 | call append(l,"<button type='button' class='btn dropdown-toggle' id='dropdownMenu1' data-toggle='dropdown'>喜爱的语言&nbsp;<span class='glyphicon glyphicon-cloud glyphicon-pencil glyphicon-search glyphicon-heart'></span></button>")
+    let l = l + 1 | call append(l,"<ul class='dropdown-menu' role='menu' aria-labelledby='dropdownMenu1'>")
+    let l = l + 1 | call append(l,"<li role='presentation' class='dropdown-header'>系统编程</li>")
+    let l = l + 1 | call append(l,"<li role='presentation'><a role='menuitem' tabindex='-1' href='#'>Java</a></li>")
+    let l = l + 1 | call append(l,"<li role='presentation' class='divider'></li>")
+    let l = l + 1 | call append(l,"<li role='presentation' class='dropdown-header'>脚本编程</li>")
+    let l = l + 1 | call append(l,"<li role='presentation'><a role='menuitem' tabindex='-1' href='#'>Python</a></li>")
+    let l = l + 1 | call append(l,"</ul></div>")
+endfunction 
+ 
+nnoremap <C-m>a :call HeaderAuthor()<CR>
+" add generic header to markdown files
+function HeaderAuthor() 
+    "normal gg 
+    "normal O 
+    let l = -1
+    let l = l + 1 | call append(l, "#Title: " . expand("%:t:r")) 
+    let l = l + 1 | call append(l, "#Date: ". strftime("%Y-%m-%d %H:%M")) 
+    let l = l + 1 | call append(l, "#Author: Shaohy<shaohaiyang@gmail.com>") 
+    let l = l + 1 | call append(l, "#Tags: ") 
+    let l = l + 1 | call append(l, "#Slug: " . expand("%:t:r")) 
+endfunction 
