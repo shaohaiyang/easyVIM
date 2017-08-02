@@ -175,8 +175,6 @@ map tn :tabnext<cr>
 map tp :tabprevious<cr>
 map tc :tabclose<cr>
 map <C-t> :tabnew<cr>
-map <C-p> :tabprevious<cr>
-map <C-n> :tabnext<cr>
 map <C-k> :tabclose<cr>
 map <C-Tab> :tabnext<cr>
 " 在文件名上按gf时，在新的tab中打开

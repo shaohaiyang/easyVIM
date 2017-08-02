@@ -23,9 +23,9 @@ Plugin 'auto-pairs'
 Plugin 'pydiction'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'othree/html5.vim'
-Plugin 'klen/python-mode'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe' " 这个插件需另外安装和配置!!!
+" Plugin 'klen/python-mode'
+" Plugin 'Valloric/YouCompleteMe' " 这个插件需另外安装和配置!!!
 call vundle#end()
