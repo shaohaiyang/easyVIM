@@ -1,0 +1,18 @@
+# https://zh.opensuse.org/openSUSE:How_to_write_a_systemd_service
+[Unit]
+Description=Daemon to start He.net IPv6
+After=network.target syslog.target # Before After
+Wants=network.target network-online.target # Requires Wants Conflicts OnFailure
+
+[Service]
+Type=oneshot # simple forking oneshot dbus
+RemainAfterExit=yes
+ExecStart=
+EnvironmentFile=/etc/sysconfig/network/config
+ExecStartPre=/usr/bin/test "x${NETWORKMANAGER}" = xyes
+StandardError=null
+
+[Install]
+WantedBy=multi-user.target
+Also=
+Alias=

@@ -29,3 +29,26 @@ Plugin 'kien/ctrlp.vim'
 " Plugin 'klen/python-mode'
 " Plugin 'Valloric/YouCompleteMe' " 这个插件需另外安装和配置!!!
 call vundle#end()
+
+nnoremap <C-m>s :call SystemdMenu()<CR>
+function SystemdMenu()
+let l = line(".") - 1
+        let l = l + 1 | call append(l,"# https://zh.opensuse.org/openSUSE:How_to_write_a_systemd_service")
+        let l = l + 1 | call append(l,"[Unit]")
+        let l = l + 1 | call append(l,"Description=Daemon to start He.net IPv6")
+        let l = l + 1 | call append(l,"After=network.target syslog.target # Before After")
+        let l = l + 1 | call append(l,"Wants=network.target network-online.target # Requires Wants Conflicts OnFailure")
+        let l = l + 1 | call append(l,"#")
+        let l = l + 1 | call append(l,"[Service]")
+        let l = l + 1 | call append(l,"Type=oneshot # simple forking oneshot dbus")
+        let l = l + 1 | call append(l,"RemainAfterExit=yes")
+        let l = l + 1 | call append(l,"ExecStart=")
+        let l = l + 1 | call append(l,"EnvironmentFile=/etc/sysconfig/network/config")
+        let l = l + 1 | call append(l,"ExecStartPre=/usr/bin/test 'x${NETWORKMANAGER}' = xyes")
+        let l = l + 1 | call append(l,"StandardError=null")
+        let l = l + 1 | call append(l,"")
+        let l = l + 1 | call append(l,"[Install]")
+        let l = l + 1 | call append(l,"WantedBy=multi-user.target")
+        let l = l + 1 | call append(l,"Also=")
+        let l = l + 1 | call append(l,"Alias=")
+endfunction
