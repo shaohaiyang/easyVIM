@@ -26,26 +26,41 @@ Plugin 'othree/html5.vim'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'klen/python-mode'
 " Plugin 'Valloric/YouCompleteMe' " 这个插件需另外安装和配置!!!
 call vundle#end()
 
 nnoremap <C-m>s :call SystemdMenu()<CR>
 function SystemdMenu()
-let l = line(".") - 1
+        let l = line(".") - 1
         let l = l + 1 | call append(l,"# https://zh.opensuse.org/openSUSE:How_to_write_a_systemd_service")
         let l = l + 1 | call append(l,"[Unit]")
         let l = l + 1 | call append(l,"Description=Daemon to start He.net IPv6")
-        let l = l + 1 | call append(l,"After=network.target syslog.target # Before After")
-        let l = l + 1 | call append(l,"Wants=network.target network-online.target # Requires Wants Conflicts OnFailure")
-        let l = l + 1 | call append(l,"#")
+        let l = l + 1 | call append(l,"# Before After")
+        let l = l + 1 | call append(l,"After=network.target syslog.target")
+        let l = l + 1 | call append(l,"# Requires Wants Conflicts OnFailure PartOf BindsTo")
+        let l = l + 1 | call append(l,"Wants=network.target network-online.target")
+        let l = l + 1 | call append(l,"")
+        let l = l + 1 | call append(l,"# Automount Mount Device Path Scope Service Slice Snapshot Socket Swap Target Timer")  
         let l = l + 1 | call append(l,"[Service]")
-        let l = l + 1 | call append(l,"Type=oneshot # simple forking oneshot dbus")
+        let l = l + 1 | call append(l,"# simple forking oneshot dbus")
+        let l = l + 1 | call append(l,"Type=oneshot")
         let l = l + 1 | call append(l,"RemainAfterExit=yes")
-        let l = l + 1 | call append(l,"ExecStart=")
+        let l = l + 1 | call append(l,"TimeoutStartSec=0")
+        let l = l + 1 | call append(l,"TimeoutStopSec=0")
+        let l = l + 1 | call append(l,"LimitNOFILE=1048576")
+        let l = l + 1 | call append(l,"LimitNPROC=1048576")
+        let l = l + 1 | call append(l,"Environment=TMPDIR=/var/tmp")
         let l = l + 1 | call append(l,"EnvironmentFile=/etc/sysconfig/network/config")
-        let l = l + 1 | call append(l,"ExecStartPre=/usr/bin/test 'x${NETWORKMANAGER}' = xyes")
-        let l = l + 1 | call append(l,"StandardError=null")
+        let l = l + 1 | call append(l,"Nice=0")
+        let l = l + 1 | call append(l,"ExecStartPre=/usr/bin/test "x${NETWORKMANAGER}" = xyes")
+        let l = l + 1 | call append(l,"ExecStart=")
+        let l = l + 1 | call append(l,"ExecStartPost=")
+        let l = l + 1 | call append(l,"ExecStop=")
+        let l = l + 1 | call append(l,"ExecStopPost=")
+        let l = l + 1 | call append(l,"# no always on-failure on-abnormal on-abort on-success")
+        let l = l + 1 | call append(l,"Restart=no")
+        let l = l + 1 | call append(l,"RestartSec=")
+        let l = l + 1 | call append(l,"ExecReload=")
         let l = l + 1 | call append(l,"")
         let l = l + 1 | call append(l,"[Install]")
         let l = l + 1 | call append(l,"WantedBy=multi-user.target")
