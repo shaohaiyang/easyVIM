@@ -47,13 +47,14 @@ function! SetOption()
   set autoindent   " 自动缩进
   set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
   set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
-  set fdm=indent " 代码折叠
+  set fdm=inden    " 代码折叠
+  set wrap         " 自动换行
   set lbr
   set tw=500
-  set wrap         " 自动换行
 let g:pydiction_location = '/Users/shaohy/.vim/bundle/pydiction/complete-dict'
 let g:pydiction_menu_height = 5
 map <F2> :!python %
+map <F3> :!python3 %
 endfunction
  
 "设置菜单语言
@@ -79,21 +80,13 @@ set ch=1
 set stl=\ [File]\ %F%m%r%h%y[%{&fileformat},%{&fileencoding}]\ %w\ \ [PWD]\ %r%{GetPWD()}%h\ %=\ [Line]\ %l,%c\ %=\ %P 
 set ls=2 " 始终显示状态行
  
-" 制表符
-set tabstop=4
-set expandtab
-set smarttab
-set shiftwidth=4
-set softtabstop=4
- 
 " 状态栏显示目前所执行的指令
 set showcmd 
  
 " 行控制
 set linebreak
 set nocompatible
-set textwidth=80
-set wrap
+set textwidth=120
  
 " 行号和标尺
 set number
@@ -107,17 +100,13 @@ set rulerformat=%15(%c%V\ %p%%%)
  
 " 插入模式下使用 <BS>、<Del> <C-W> <C-U>
 set backspace=indent,eol,start
+
 " 允许backspace和光标键跨越行边界
-set whichwrap+=<,>,h,l
+"set whichwrap+=<,>,h,l
 
 " 标签页
 set tabpagemax=20
 set showtabline=2
- 
-" 缩进
-set autoindent
-set cindent
-set smartindent
  
 " 自动重新读入
 set autoread
@@ -131,9 +120,6 @@ set incsearch
 set hlsearch
 set noai nosi
 set cursorline
- 
-"显示匹配的括号
-set showmatch
  
 "在所有模式下都允许使用鼠标，还可以是n,v,i,c等
 set mouse=a
