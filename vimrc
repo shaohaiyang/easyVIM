@@ -47,7 +47,7 @@ function! SetOption()
   set autoindent   " 自动缩进
   set smarttab     " 只在行首用tab，其他地方的tab都用空格代替
   set showmatch    " 在输入括号时光标会短暂地跳到与之相匹配的括号处
-  set fdm=inden    " 代码折叠
+"  set fdm=inden     " 代码折叠
   set wrap         " 自动换行
   set lbr
   set tw=500
