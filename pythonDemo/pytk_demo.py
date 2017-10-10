@@ -28,7 +28,11 @@ g_color = '#D5E0EE'
 filename = None
 
 frame=Frame(window,width=600,height=400,bg=g_color)
-frame.pack()
+frame.grid(sticky=E)
+
+def Init():
+    frame=Frame(window,width=600,height=400,bg=g_color)
+    frame.grid(sticky=E)
 
 # 定义一个菜单栏
 def callHelp():
@@ -55,9 +59,18 @@ def callOpen():
 def callSave():
     asksaveasfilename(initialdir = "./",title = "Select file",filetypes = (("jpeg files","*.jpg"),("all files","*.*")))
 
+menubar = Menu(window)
+filemenu = Menu(menubar,tearoff = True) # 定义一个子菜单
+filemenu.add_command(label='Open',command=callOpen)
+filemenu.add_command(label='Save',command=callSave)
+filemenu.add_separator() # 定义一个分隔栏
+filemenu.add_command(label='Help',command=callHelp)
+filemenu.add_command(label='Exit',command=window.quit) # 添加到上层容器里
+menubar.add_cascade(label='File',menu=filemenu) # 显示菜单
+
+# 定义一个菜单栏
 def callDemos():
-    if LabelVar.get():
-        print('label & button demo')
+    LabelDemo(LabelVar.get())
     if ButtonVar.get():
         print('check & radio demo')
     if EntryVar.get():
@@ -67,14 +80,19 @@ def callDemos():
     if TextVar.get():
         print('Textarea demo')
 
-menubar = Menu(window)
-filemenu = Menu(menubar,tearoff = True) # 定义一个子菜单
-filemenu.add_command(label='Open',command=callOpen)
-filemenu.add_command(label='Save',command=callSave)
-filemenu.add_separator() # 定义一个分隔栏
-filemenu.add_command(label='Help',command=callHelp)
-filemenu.add_command(label='Exit',command=window.quit) # 添加到上层容器里
-menubar.add_cascade(label='File',menu=filemenu) # 显示菜单
+LabelStr = StringVar()
+def callChageLabel():
+    LabelStr.set(u('Label改变：World'))
+
+def LabelDemo(use=0):
+    if use:
+        LabelStr.set(u('Label演示：Hello'))
+        labelframe = LabelFrame(frame,text=u('Label Demo')).grid(row=0)
+        Label(labelframe, textvariable=LabelStr).grid(row=1)
+        Button(labelframe,text=u('改变'),command=callChageLabel).grid(row=2)
+    else:
+        Init()
+
 
 LabelVar = IntVar()
 ButtonVar = IntVar()
@@ -102,6 +120,7 @@ popup_menu.add_command(label=u('复制'),command=None)
 popup_menu.add_command(label=u('粘贴'),command=None)
 frame.bind('<Button-2>', popup)
 
+"""
 # 定义一个下拉菜单
 g_options = ['one','two','three','zero']
 choose = StringVar()
@@ -119,6 +138,7 @@ Button(frame,text='Choose',command=callOption).grid(row=1,column=2)
 # 定义一个固定下拉框
 w = Spinbox(frame,from_=0,to=10).grid(row=2,column=1)
 w = Spinbox(frame,values=('level1','level2','level3')).grid(row=2,column=2)
+"""
 
 
 window.config(menu=menubar)
