@@ -1,0 +1,34 @@
+# https://zh.opensuse.org/openSUSE:How_to_write_a_systemd_service
+[Unit]
+Description=Daemon to start He.net IPv6
+# Before After
+After=network.target syslog.target
+# Requires Wants Conflicts OnFailure PartOf BindsTo
+Wants=network.target network-online.target
+
+# Automount Mount Device Path Scope Service Slice Snapshot Socket Swap Target Timer
+[Service]
+# simple forking oneshot dbus
+Type=oneshot
+RemainAfterExit=yes
+TimeoutStartSec=0
+TimeoutStopSec=0
+LimitNOFILE=1048576
+LimitNPROC=1048576
+Environment=TMPDIR=/var/tmp
+EnvironmentFile=/etc/sysconfig/network/config
+Nice=0
+ExecStartPre=/usr/bin/test 'x${NETWORKMANAGER}' = xyes
+ExecStart=
+ExecStartPost=
+ExecStop=
+ExecStopPost=
+# no always on-failure on-abnormal on-abort on-success
+Restart=no
+RestartSec=
+ExecReload=
+
+[Install]
+WantedBy=multi-user.target
+Also=
+Alias=
