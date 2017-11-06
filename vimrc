@@ -29,7 +29,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
  
 " syntax
-syntax on
+syntax off
  
 " nobackup
 set nobackup
