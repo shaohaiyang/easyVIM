@@ -19,7 +19,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 set rtp+=~/.vim/bundle/Vundle.vim/
 set clipboard=unnamed
-vnoremap <C-c> :w !pbcopy<CR><CR>
+vnoremap <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>:bufdo e<CR>
+vnoremap <C-y> :w !pbcopy<CR><CR>
 noremap <C-v> :r !pbpaste<CR><CR> 
 nnoremap  :set invpaste paste? imap :set invpaste paste? set pastetoggle=
  
