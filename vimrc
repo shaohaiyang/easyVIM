@@ -9,8 +9,47 @@ if filereadable(expand("~/.vimrc.html"))
     source ~/.vimrc.html
 endif
 
+" 修改leader键
+let mapleader = ','
+let g:mapleader = ','
+
+" 在上下移动光标时，光标的上方或下方至少会保留显示的行数
+set scrolloff=7
+
+" 代码折叠自定义快捷键 <leader>zz
+let g:FoldMethod = 0
+map <leader>zz :call ToggleFold()<cr>
+function! ToggleFold()
+    if g:FoldMethod == 0
+        exe "normal! zM"
+        let g:FoldMethod = 1
+    else
+        exe "normal! zR"
+        let g:FoldMethod = 0
+    endif
+endfunction
+
+" 相对行号: 行号变成相对，可以用 nj/nk 进行跳转
+set relativenumber number
+au FocusLost * :set norelativenumber number
+au FocusGained * :set relativenumber
+" 插入模式下用绝对行号, 普通模式下用相对
+autocmd InsertEnter * :set norelativenumber number
+autocmd InsertLeave * :set relativenumber
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber number
+  else
+    set relativenumber
+  endif
+endfunc
+nnoremap <C-n> :call NumberToggle()<cr>
+
 set clipboard=unnamed
-vnoremap <C-c> :w !pbcopy<CR><CR>
+"map <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>
+vnoremap <C-c> y:e ~/clipsongzboard<CR>P:w !pbcopy<CR><CR>:bdelete!<CR>:bufdo e<CR>
+vnoremap <C-y> :w !pbcopy<CR><CR>
+noremap <C-v> :r !pbpaste<CR><CR>
 nnoremap  :set invpaste paste? imap :set invpaste paste? set pastetoggle=
 
 autocmd VimEnter * NERDTree
@@ -29,7 +68,7 @@ nnoremap <C-h> <C-W>h
 nnoremap <C-l> <C-W>l
  
 " syntax
-syntax off
+syntax on
  
 " nobackup
 set nobackup
@@ -57,6 +96,20 @@ map <F2> :!python %
 map <F3> :!python3 %
 endfunction
  
+function! s:ZoomToggle() abort
+    if exists('t:zoomed') && t:zoomed
+        execute t:zoom_winrestcmd
+        let t:zoomed = 0
+    else
+        let t:zoom_winrestcmd = winrestcmd()
+        resize
+        vertical resize
+        let t:zoomed = 1
+    endif
+endfunction
+command! ZoomToggle call s:ZoomToggle()
+nnoremap <silent> <Leader>z :ZoomToggle<CR>
+
 "设置菜单语言
 set langmenu=zh_cn
  
