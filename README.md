@@ -62,6 +62,15 @@ gs: 垂直分割创建文件的窗口，但是光标仍然留在NERDTree
 t: 打开一个文件，创建的是Tab，对书签同样生效
 T: 打开一个文件，但是光标仍然留在NERDTree，创建的是Tab，对书签同样生效
 
+tn :tabnext<cr>
+tp :tabprevious<cr>
+tc :tabclose<cr>
+map <C-t> :tabnew<cr>
+map <C-k> :tabclose<cr>
+map <C-Tab> :tabnext<cr>
+" 在文件名上按gf时，在新的tab中打开
+map gf :tabnew <cfile><cr>
+
 e: 以文件管理的方式打开选中的目录
 I: 显示或者不显示隐藏文件
 A: 全屏显示NERDTree，或者关闭全屏
@@ -76,5 +85,4 @@ u: 设置上级目录为根路径
 U: 设置上级目录为根路径，但是维持原来目录打开的状态
 r: 刷新光标所在的目录
 R: 刷新当前根路径
-
 ```
